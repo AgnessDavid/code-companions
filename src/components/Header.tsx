@@ -27,15 +27,15 @@ const Header = () => {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+          <Link to="/clubs" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
             Clubs
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+          </Link>
+          <Link to="/library" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
             Bibliothèque
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+          </Link>
+          <Link to="/events" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
             Événements
-          </a>
+          </Link>
         </nav>
 
         {/* Auth Buttons */}
