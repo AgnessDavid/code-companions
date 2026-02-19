@@ -12,6 +12,7 @@ import Library from "./pages/Library";
 import Clubs from "./pages/Clubs";
 import AuthorProfile from "./pages/AuthorProfile";
 import Contact from "./pages/Contact";
+import Article from "./pages/Article";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/clubs" element={<Clubs />} />
             <Route path="/auteurs" element={<AuthorProfile />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/article" element={<Article />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
