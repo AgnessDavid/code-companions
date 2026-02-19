@@ -36,6 +36,12 @@ const Header = () => {
           <Link to="/events" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
             Événements
           </Link>
+          <Link to="/auteurs" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+            Auteurs
+          </Link>
+          <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+            Contact
+          </Link>
         </nav>
 
         {/* Auth Buttons */}
