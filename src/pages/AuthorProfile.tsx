@@ -44,11 +44,11 @@ const AuthorProfile = () => {
         <div className="relative h-56 md:h-72 overflow-hidden">
           <img src={heroImage} alt="Banner" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-6 left-6 md:left-12 flex items-end gap-5">
+          <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:left-12 flex items-end gap-3 sm:gap-5">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-background bg-muted overflow-hidden shadow-lg"
+              className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full border-4 border-background bg-muted overflow-hidden shadow-lg"
             >
               <div className="w-full h-full bg-primary/20 flex items-center justify-center text-primary text-3xl font-serif">JL</div>
             </motion.div>
@@ -77,7 +77,7 @@ const AuthorProfile = () => {
               </motion.section>
 
               {/* Stats */}
-              <div className="flex gap-8">
+              <div className="flex gap-6 sm:gap-8">
                 <div className="text-right">
                   <p className="text-2xl font-serif font-bold text-primary">12</p>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider">Livres</p>

@@ -210,10 +210,10 @@ const Dashboard = () => {
       <div className="flex-1 flex flex-col">
         <DashboardHeader />
         
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="flex-1 p-4 sm:p-6 overflow-auto">
           {/* Welcome */}
           <div className="mb-8">
-            <h1 className="font-serif text-3xl font-bold text-foreground">
+            <h1 className="font-serif text-2xl sm:text-3xl font-bold text-foreground pl-10 md:pl-0">
               Bonjour, {profile?.display_name?.split(" ")[0] || "Lecteur"} !
             </h1>
             <p className="text-muted-foreground mt-1">

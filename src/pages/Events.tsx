@@ -240,14 +240,14 @@ const Events = () => {
                         </p>
 
                         {/* Footer */}
-                        <div className="flex items-center justify-between pt-3 border-t border-border">
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-border">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground truncate max-w-full">
                             {isVirtual ? (
-                              <Video className="w-4 h-4" />
+                              <Video className="w-4 h-4 shrink-0" />
                             ) : (
-                              <MapPin className="w-4 h-4" />
+                              <MapPin className="w-4 h-4 shrink-0" />
                             )}
-                            <span>{event.location || "En ligne"}</span>
+                            <span className="truncate">{event.location || "En ligne"}</span>
                           </div>
                           
                           {filter === "upcoming" && (
