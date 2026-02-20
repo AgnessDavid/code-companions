@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Video, MapPin, Calendar } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Plus, Video, MapPin, Calendar, ExternalLink, Copy, Check } from "lucide-react";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { motion } from "framer-motion";
@@ -19,6 +21,8 @@ interface Event {
   description: string | null;
   event_date: string;
   location: string | null;
+  meeting_url: string | null;
+  event_type: string | null;
 }
 
 const categories = ["Tous", "Classiques", "Poésie", "Ateliers", "Fiction"];
@@ -30,6 +34,7 @@ const Events = () => {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("upcoming");
   const [category, setCategory] = useState("Tous");
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchEvents();
@@ -180,7 +185,8 @@ const Events = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {events.map((event, index) => {
                 const eventDate = new Date(event.event_date);
-                const isVirtual = !event.location || event.location.toLowerCase().includes("virtuel") || event.location.toLowerCase().includes("en ligne");
+                const isVirtual = event.event_type === 'virtual' || event.event_type === 'hybrid' || !event.location || event.location.toLowerCase().includes("virtuel") || event.location.toLowerCase().includes("en ligne");
+                const hasMeeting = !!event.meeting_url;
 
                 return (
                   <motion.div
@@ -245,13 +251,26 @@ const Events = () => {
                           </div>
                           
                           {filter === "upcoming" && (
-                            <Button
-                              size="sm"
-                              className="bg-primary text-primary-foreground hover:bg-burgundy-dark"
-                              onClick={() => handleRegister(event.id)}
-                            >
-                              S'inscrire
-                            </Button>
+                            <div className="flex gap-2">
+                              {hasMeeting && (
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground gap-1"
+                                  onClick={() => window.open(event.meeting_url!, "_blank")}
+                                >
+                                  <Video className="w-3 h-3" />
+                                  Rejoindre
+                                </Button>
+                              )}
+                              <Button
+                                size="sm"
+                                className="bg-primary text-primary-foreground hover:bg-burgundy-dark"
+                                onClick={() => handleRegister(event.id)}
+                              >
+                                S'inscrire
+                              </Button>
+                            </div>
                           )}
                         </div>
                       </CardContent>
