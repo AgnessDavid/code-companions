@@ -51,7 +51,7 @@ const Article = () => {
       <Header />
 
       {/* Article Header */}
-      <section className="pt-32 pb-8">
+      <section className="pt-24 sm:pt-32 pb-8">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -64,7 +64,7 @@ const Article = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-8"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-8"
           >
             La Renaissance de la Correspondance Manuscrite à l'Ère Numérique
           </motion.h1>
@@ -72,7 +72,7 @@ const Article = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center justify-center gap-6 text-muted-foreground text-sm"
+            className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-muted-foreground text-sm"
           >
             <div className="flex items-center gap-2">
               <Avatar className="w-8 h-8">
@@ -104,7 +104,7 @@ const Article = () => {
         className="container mx-auto px-4 max-w-5xl mb-12"
       >
         <div className="rounded-2xl overflow-hidden shadow-xl">
-          <img src={articleHero} alt="Handwritten correspondence" className="w-full h-[400px] md:h-[500px] object-cover" />
+          <img src={articleHero} alt="Handwritten correspondence" className="w-full h-[250px] sm:h-[400px] md:h-[500px] object-cover" />
         </div>
       </motion.div>
 
@@ -137,6 +137,26 @@ const Article = () => {
               <span className="text-xs text-muted-foreground">Share</span>
             </button>
           </motion.aside>
+
+          {/* Mobile Action Bar */}
+          <div className="flex md:hidden justify-center gap-6 mb-6">
+            <button onClick={handleLike} className="flex items-center gap-2">
+              <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${liked ? "bg-primary text-primary-foreground" : "bg-muted"}`}>
+                <Heart className={`w-4 h-4 ${liked ? "fill-current" : ""}`} />
+              </div>
+              <span className="text-xs text-muted-foreground">{likes}</span>
+            </button>
+            <button onClick={() => setSaved(!saved)} className="flex items-center gap-2">
+              <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${saved ? "bg-primary text-primary-foreground" : "bg-muted"}`}>
+                <Bookmark className={`w-4 h-4 ${saved ? "fill-current" : ""}`} />
+              </div>
+            </button>
+            <button className="flex items-center gap-2">
+              <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center">
+                <Share2 className="w-4 h-4" />
+              </div>
+            </button>
+          </div>
 
           {/* Main Content */}
           <motion.article
@@ -179,7 +199,7 @@ const Article = () => {
             </p>
 
             {/* Author Card */}
-            <div className="bg-cream-dark/30 rounded-2xl p-6 mt-12 flex items-start gap-4">
+            <div className="bg-cream-dark/30 rounded-2xl p-4 sm:p-6 mt-12 flex flex-col sm:flex-row items-start gap-4">
               <Avatar className="w-14 h-14">
                 <AvatarImage src="" />
                 <AvatarFallback className="bg-primary/10 text-primary">JV</AvatarFallback>
@@ -207,7 +227,7 @@ const Article = () => {
           <h2 className="font-serif text-2xl font-bold text-foreground mb-8">Conversation (12)</h2>
 
           {/* Sample Comment */}
-          <div className="flex gap-4 mb-8 pb-6 border-b border-border">
+          <div className="flex gap-3 sm:gap-4 mb-8 pb-6 border-b border-border">
             <Avatar className="w-10 h-10">
               <AvatarFallback className="bg-muted text-muted-foreground text-sm">ER</AvatarFallback>
             </Avatar>
@@ -247,13 +267,13 @@ const Article = () => {
       {/* Related Articles */}
       <section className="py-16 bg-cream-dark/30">
         <div className="container mx-auto px-4">
-          <div className="flex items-end justify-between mb-10">
-            <h2 className="font-serif text-3xl font-bold text-foreground">More from Café des Lettres</h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-foreground">More from Café des Lettres</h2>
             <Link to="/library" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all text-sm">
               View All Articles <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {relatedArticles.map((article, i) => (
               <motion.div
                 key={i}
