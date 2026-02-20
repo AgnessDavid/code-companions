@@ -134,24 +134,33 @@ export type Database = {
           created_at: string | null
           description: string | null
           event_date: string
+          event_type: string | null
           id: string
           location: string | null
+          meet_link: string | null
+          meeting_url: string | null
           title: string
         }
         Insert: {
           created_at?: string | null
           description?: string | null
           event_date: string
+          event_type?: string | null
           id?: string
           location?: string | null
+          meet_link?: string | null
+          meeting_url?: string | null
           title: string
         }
         Update: {
           created_at?: string | null
           description?: string | null
           event_date?: string
+          event_type?: string | null
           id?: string
           location?: string | null
+          meet_link?: string | null
+          meeting_url?: string | null
           title?: string
         }
         Relationships: []
